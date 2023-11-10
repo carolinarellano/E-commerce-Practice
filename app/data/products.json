@@ -1,0 +1,122 @@
+[
+  {
+    "_uuid": "c6589973-df14-4fe4-8541-b156ed1942ff",
+    "_title": "Alarm Clock",
+    "_description": "Start your day on time with our modern Alarm Clock.",
+    "_imageURL": "https://i.ibb.co/pfZmVM6/Alarm-Clock.jpg",
+    "_unit": "pieces",
+    "_stock": 4,
+    "_pricePerUnit": 29.99,
+    "_category": "Collection"
+  },
+  {
+    "_uuid": "f8bf4284-65c4-4e0a-8573-5d6a22aaa6cb",
+    "_title": "Chunky Ceramic Cups",
+    "_description": "Elevate your decor with unique ceramic cups.",
+    "_imageURL": "https://i.ibb.co/7W5GJgp/Chunky-Ceramic.jpg",
+    "_unit": "pieces",
+    "_stock": 36,
+    "_pricePerUnit": 9.99,
+    "_category": "Collection"
+  },
+  {
+    "_uuid": "1adc0c2f-eb8a-4f6d-969e-bdc1c166bebf",
+    "_title": "Digicam",
+    "_description": "Capture life's moments with precision using our Digicam.",
+    "_imageURL": "https://i.ibb.co/ZYhF3vs/Digicam.jpg",
+    "_unit": "pieces",
+    "_stock": 15,
+    "_pricePerUnit": 59.99,
+    "_category": "Collection"
+  },
+  {
+    "_uuid": "af0a9dae-5b27-4403-bfa2-75b2a7418a1b",
+    "_title": "Necklaces set",
+    "_description": "Add an unique style to any outfit with our Necklaces Set.",
+    "_imageURL": "https://i.ibb.co/Qb9DvGg/Necklaces-Set.jpg",
+    "_unit": "pieces",
+    "_stock": 55,
+    "_pricePerUnit": 7.99,
+    "_category": "Fashion"
+  },
+  {
+    "_uuid": "cd49321d-49b2-46b3-a6c4-6c9ef186f0d0",
+    "_title": "Pink Vintage Mixer",
+    "_description": "Mix with elegance using our charming Pink Vintage Mixer.",
+    "_imageURL": "https://i.ibb.co/G25MKMF/Mixer.jpg",
+    "_unit": "pieces",
+    "_stock": 21,
+    "_pricePerUnit": 129.99,
+    "_category": "Collection"
+  },
+  {
+    "_uuid": "22998ef3-f721-4f36-b55a-3606ec6b9f28",
+    "_title": "Rings",
+    "_description": "Express yourself with our stunning Ring collection.",
+    "_imageURL": "https://i.ibb.co/YhhXjPw/Rings.jpg",
+    "_unit": "pieces",
+    "_stock": 400,
+    "_pricePerUnit": 33.99,
+    "_category": "Fashion"
+  },
+  {
+    "_uuid": "a5c14604-0e5d-4d2d-95af-0d5d052a3823",
+    "_title": "Sonny Angels: Pets Edition",
+    "_description": "Collect adorable pet figurines with Sonny Angels!",
+    "_imageURL": "https://i.ibb.co/3RHQMWJ/Sonny-Angels-Pets.jpg",
+    "_unit": "pieces",
+    "_stock": 14,
+    "_pricePerUnit": 49.99,
+    "_category": "Collection"
+  },
+  {
+    "_uuid": "329b726d-c1e6-492a-aeb2-361d3452a62d",
+    "_title": "Tennis Shoes",
+    "_description": "Step comfortably in our fashionable Tennis Shoes.",
+    "_imageURL": "https://i.ibb.co/S0xryPj/Spring-Shoes.jpg",
+    "_unit": "pieces",
+    "_stock": 67,
+    "_pricePerUnit": 89.99,
+    "_category": "Fashion"
+  },
+  {
+    "_uuid": "ab85ad6b-2719-4e1b-a687-0fdf52670ad5",
+    "_title": "Messenger bag",
+    "_description": "Stay organized and stylish with our Messenger Bag.",
+    "_imageURL": "https://i.ibb.co/xH4rHT8/Messenger-Bag.jpg",
+    "_unit": "pieces",
+    "_stock": 10,
+    "_pricePerUnit": 49.99,
+    "_category": "Fashion"
+  },
+  {
+    "_uuid": "63df8f7c-62e9-430a-a4d7-879c3dde2468",
+    "_title": "Orange Chess",
+    "_description": "Enjoy hours of strategic fun on this beautifully crafted board.",
+    "_imageURL": "https://i.ibb.co/K6x35ks/Chess.jpg",
+    "_unit": "pieces",
+    "_stock": 14,
+    "_pricePerUnit": 67.99,
+    "_category": "Collection"
+  },
+  {
+    "_uuid": "f22e2a73-5c13-4769-b77b-4520c5218369",
+    "_title": "Pretty Pins",
+    "_description": "Add a touch of elegance to your attire with our Pretty Pins.",
+    "_imageURL": "https://i.ibb.co/GxYjh9k/Pins.jpg",
+    "_unit": "pieces",
+    "_stock": 68,
+    "_pricePerUnit": 11.29,
+    "_category": "Fashion"
+  },
+  {
+    "_uuid": "1532c624-1d7b-4380-aa25-7fb712709d05",
+    "_title": "Sylvanian Friends",
+    "_description": "Enter the enchanting world of Sylvanian Friends.",
+    "_imageURL": "https://i.ibb.co/mRq56gf/Silvanian-Friends.jpg",
+    "_unit": "pieces",
+    "_stock": 38,
+    "_pricePerUnit": 21.99,
+    "_category": "Collection"
+  }
+]
