@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        /* Top Navigation Bar */
+        .top-nav {
+            background-color: #a94234; /* Color terracota */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .menu-icon {
+            background-color: #a94234; /* Color terracota */
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .back-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        .back-button i {
+            margin-right: 5px;
+        }
+
+        /* User Profile Card */
+        .profile-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .profile-sidebar {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .profile-main {
+            flex: 2;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+        }
+
+        /* Profile Header */
+        .profile-header {
+            background-color: #a94234; /* Color terracota */
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            position: relative;
+            background-color: #f5e6e4; /* Color más claro para el fondo del avatar */
+        }
+
+        .profile-avatar-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .profile-title {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Profile Info */
+        .profile-info {
+            padding: 20px;
+        }
+
+        .info-section {
+            margin-bottom: 20px;
+        }
+
+        .info-section h3 {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-item {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .info-icon {
+            width: 30px;
+            color: #a94234; /* Color terracota */
+            font-size: 18px;
+            text-align: center;
+        }
+
+        /* Main Content Sections */
+        .content-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #a94234; /* Color terracota */
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f5e6e4; /* Color más claro para el borde */
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        /* Activity Section */
+        .activity-list {
+            list-style: none;
+        }
+
+        .activity-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #f5e6e4; /* Color más claro para el fondo del icono */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .activity-time {
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* Favorites Section */
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .favorite-item {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid #f5e6e4; /* Color más claro para el borde */
+        }
+
+        .favorite-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .favorite-content {
+            padding: 15px;
+        }
+
+        .favorite-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .favorite-category {
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #a94234; /* Color terracota */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #7d3128; /* Versión más oscura del color terracota */
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid #a94234; /* Color terracota */
+            color: #a94234; /* Color terracota */
+        }
+
+        .btn-outline:hover {
+            background-color: #f5e6e4; /* Color más claro para el hover */
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+            }
+
+            .profile-avatar {
+                width: 120px;
+                height: 120px;
+            }
+
+            .profile-avatar-text {
+                font-size: 50px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <!-- Añadimos Font Awesome para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación superior -->
+    <div class="top-nav">
+        <div style="display: flex; align-items: center;">
+            <button class="back-button" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </div>
+        <!-- Se ha eliminado el campo de búsqueda -->
+    </div>
+
+    <div class="profile-container">
+        <!-- Profile Sidebar -->
+        <div class="profile-sidebar">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <div class="profile-avatar-text">👤</div>
+                </div>
+                <h1 class="profile-name">John Doe</h1>
+                <p class="profile-title">Premium Member</p>
+            </div>
+
+            <div class="profile-info">
+                <div class="info-section">
+                    <h3>Contact</h3>
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <span>john.doe@example.com</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📱</span>
+                        <span>(555) 123-4567</span>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Account Info</h3>
+                    <div class="info-item">
+                        <span class="info-icon">🔑</span>
+                        <span>Member since: Jan 2023</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">⭐</span>
+                        <span>Premium Status</span>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Preferences</h3>
+                    <div class="info-item">
+                        <span class="info-icon">🏠</span>
+                        <span>Home Decor</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">👕</span>
+                        <span>Fashion</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Main Content -->
+        <div class="profile-main">
+            <div class="content-section">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-text">
+                    <p>Hello! I'm John, a home decor enthusiast and a loyal customer of Home Sweet Home. I love finding unique pieces that add character to my living space and reflect my personal style.</p>
+                    
+                    <p>I believe that a well-designed home should be both beautiful and functional, creating a space where I can relax and entertain friends and family.</p>
+                </div>
+                <div class="actions">
+                    <a href="#" class="btn">Edit Profile</a>
+                    <a href="#" class="btn btn-outline">Change Password</a>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Recent Activity</h2>
+                <ul class="activity-list">
+                    <li class="activity-item">
+                        <div class="activity-icon">🛒</div>
+                        <div class="activity-content">
+                            <h3 class="activity-title">Purchased Rustic Wall Decor</h3>
+                            <p class="activity-time">2 days ago</p>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon">❤️</div>
+                        <div class="activity-content">
+                            <h3 class="activity-title">Added 3 items to Wishlist</h3>
+                            <p class="activity-time">1 week ago</p>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon">⭐</div>
+                        <div class="activity-content">
+                            <h3 class="activity-title">Reviewed Cozy Throw Blanket</h3>
+                            <p class="activity-time">2 weeks ago</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">My Favorites</h2>
+                <div class="favorites-grid">
+                    <div class="favorite-item">
+                        <div class="favorite-content">
+                            <h3 class="favorite-title">Vintage Table Lamp</h3>
+                            <p class="favorite-category">Lighting</p>
+                        </div>
+                    </div>
+                    <div class="favorite-item">
+                        <div class="favorite-content">
+                            <h3 class="favorite-title">Macrame Wall Hanging</h3>
+                            <p class="favorite-category">Wall Decor</p>
+                        </div>
+                    </div>
+                    <div class="favorite-item">
+                        <div class="favorite-content">
+                            <h3 class="favorite-title">Ceramic Vase Set</h3>
+                            <p class="favorite-category">Accessories</p>
+                        </div>
+                    </div>
+                    <div class="favorite-item">
+                        <div class="favorite-content">
+                            <h3 class="favorite-title">Linen Throw Pillows</h3>
+                            <p class="favorite-category">Textiles</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

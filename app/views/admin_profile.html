@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        /* Top Navigation Bar */
+        .top-nav {
+            background-color: #a94234; /* Nuevo color terracota */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .menu-icon {
+            background-color: #a94234; /* Nuevo color terracota */
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Back Button */
+        .back-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        .back-button i {
+            margin-right: 5px;
+        }
+
+        /* Admin Profile Card */
+        .profile-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Profile Header */
+        .profile-header {
+            background-color: #a94234; /* Nuevo color terracota */
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            position: relative;
+            background-color: #f5e6e4; /* Color más claro para el fondo del avatar */
+        }
+
+        .profile-avatar-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+        }
+
+        .profile-name {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .profile-title {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .admin-badge {
+            display: inline-block;
+            background-color: #7d3128; /* Versión más oscura del color terracota */
+            color: white;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        /* Admin Navigation */
+        .admin-nav {
+            display: flex;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            overflow-x: auto;
+        }
+
+        .admin-nav-item {
+            padding: 15px 20px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .admin-nav-item:hover {
+            background-color: #e9ecef;
+        }
+
+        .admin-nav-item.active {
+            border-bottom: 3px solid #a94234; /* Nuevo color terracota */
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .admin-content {
+            padding: 25px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #a94234; /* Nuevo color terracota */
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        /* Dashboard Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-left: 4px solid #a94234; /* Nuevo color terracota */
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            color: #778ca3;
+            font-size: 14px;
+        }
+
+        /* Tables */
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .admin-table th {
+            background-color: #f8f9fa;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #a94234; /* Nuevo color terracota */
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .admin-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .admin-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status.active {
+            background-color: #e8f7ef;
+            color: #2ecc71;
+        }
+
+        .status.pending {
+            background-color: #fef5e7;
+            color: #f39c12;
+        }
+
+        .status.inactive {
+            background-color: #f8f9fa;
+            color: #95a5a6;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #a94234; /* Nuevo color terracota */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #7d3128; /* Versión más oscura del color terracota */
+        }
+
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        .actions {
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .admin-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <!-- Añadimos Font Awesome para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación superior -->
+    <div class="top-nav">
+        <div style="display: flex; align-items: center;">
+            <button class="back-button" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </div>
+        <!-- Se ha eliminado el campo de búsqueda -->
+    </div>
+
+    <div class="profile-container">
+        <!-- Admin Header -->
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <div class="profile-avatar-text">👨‍💼</div>
+            </div>
+            <h1 class="profile-name">Sarah Johnson</h1>
+            <p class="profile-title">Store Manager</p>
+            <span class="admin-badge">Administrator</span>
+        </div>
+
+        <!-- Admin Navigation -->
+        <div class="admin-nav">
+            <div class="admin-nav-item active">Dashboard</div>
+            <div class="admin-nav-item">Users</div>
+            <div class="admin-nav-item">Products</div>
+            <div class="admin-nav-item">Orders</div>
+            <div class="admin-nav-item">Settings</div>
+        </div>
+
+        <!-- Admin Content -->
+        <div class="admin-content">
+            <h2 class="section-title">Dashboard Overview</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Users</div>
+                    <div class="stat-value">1,254</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Orders</div>
+                    <div class="stat-value">856</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Products</div>
+                    <div class="stat-value">432</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Revenue</div>
+                    <div class="stat-value">$24,582</div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Recent Users</h2>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>john.doe@example.com</td>
+                        <td><span class="status active">Active</span></td>
+                        <td>
+                            <button class="btn btn-sm">View</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Emily Wilson</td>
+                        <td>emily@example.com</td>
+                        <td><span class="status pending">Pending</span></td>
+                        <td>
+                            <button class="btn btn-sm">View</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Michael Brown</td>
+                        <td>michael@example.com</td>
+                        <td><span class="status active">Active</span></td>
+                        <td>
+                            <button class="btn btn-sm">View</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="actions">
+                <a href="#" class="btn">View All Users</a>
+            </div>
+
+            <h2 class="section-title">Recent Orders</h2>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#1089</td>
+                        <td>John Doe</td>
+                        <td>$129.99</td>
+                        <td><span class="status active">Delivered</span></td>
+                    </tr>
+                    <tr>
+                        <td>#1088</td>
+                        <td>Emily Wilson</td>
+                        <td>$85.50</td>
+                        <td><span class="status pending">Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td>#1087</td>
+                        <td>Michael Brown</td>
+                        <td>$210.75</td>
+                        <td><span class="status active">Shipped</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="actions">
+                <a href="#" class="btn">View All Orders</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
