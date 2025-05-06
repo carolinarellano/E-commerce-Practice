@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= user.name %>'s Profile</title>
+    <link rel="stylesheet" href="/public/css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="top-nav">
+        <div style="display: flex; align-items: center;">
+            <button class="back-button" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </div>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-sidebar">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <div class="profile-avatar-text">👤</div>
+                </div>
+                <h1 class="profile-name"><%= user.name %></h1>
+                <p class="profile-title"><%= user.membership %></p>
+            </div>
+
+            <div class="profile-info">
+                <div class="info-section">
+                    <h3>Contact</h3>
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <span><%= user.email %></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📱</span>
+                        <span><%= user.phone %></span>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Account Info</h3>
+                    <div class="info-item">
+                        <span class="info-icon">🔑</span>
+                        <span>Member since: <%= user.joinedDate %></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">⭐</span>
+                        <span><%= user.status %></span>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Preferences</h3>
+                    <% user.preferences.forEach(function(pref) { %>
+                        <div class="info-item">
+                            <span class="info-icon"><%= pref.icon %></span>
+                            <span><%= pref.name %></span>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-main">
+            <div class="content-section">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-text">
+                    <% user.about.forEach(function(paragraph) { %>
+                        <p><%= paragraph %></p>
+                    <% }) %>
+                </div>
+                <div class="actions">
+                    <a href="/edit-profile" class="btn">Edit Profile</a>
+                    <a href="/change-password" class="btn btn-outline">Change Password</a>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Recent Activity</h2>
+                <ul class="activity-list">
+                    <% user.activities.forEach(function(activity) { %>
+                        <li class="activity-item">
+                            <div class="activity-icon"><%= activity.icon %></div>
+                            <div class="activity-content">
+                                <h3 class="activity-title"><%= activity.title %></h3>
+                                <p class="activity-time"><%= activity.time %></p>
+                            </div>
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">My Favorites</h2>
+                <div class="favorites-grid">
+                    <% user.favorites.forEach(function(fav) { %>
+                        <div class="favorite-item">
+                            <div class="favorite-content">
+                                <h3 class="favorite-title"><%= fav.title %></h3>
+                                <p class="favorite-category"><%= fav.category %></p>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= admin.name %> - Admin Profile</title>
+  <link rel="stylesheet" href="/public/css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <!-- Barra de navegación superior -->
+  <div class="top-nav">
+    <div style="display: flex; align-items: center;">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i> Back
+      </button>
+    </div>
+  </div>
+
+  <div class="profile-container">
+    <!-- Admin Header -->
+    <div class="profile-header">
+      <div class="profile-avatar">
+        <div class="profile-avatar-text">👨‍💼</div>
+      </div>
+      <h1 class="profile-name"><%= admin.name %></h1>
+      <p class="profile-title"><%= admin.role %></p>
+      <span class="admin-badge">Administrator</span>
+    </div>
+
+    <!-- Admin Navigation -->
+    <div class="admin-nav">
+      <div class="admin-nav-item active">Dashboard</div>
+      <div class="admin-nav-item">Users</div>
+      <div class="admin-nav-item">Products</div>
+      <div class="admin-nav-item">Orders</div>
+      <div class="admin-nav-item">Settings</div>
+    </div>
+
+    <!-- Admin Content -->
+    <div class="admin-content">
+      <h2 class="section-title">Dashboard Overview</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Users</div>
+          <div class="stat-value"><%= stats.users %></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Orders</div>
+          <div class="stat-value"><%= stats.orders %></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Products</div>
+          <div class="stat-value"><%= stats.products %></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Revenue</div>
+          <div class="stat-value">$<%= stats.revenue %></div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Recent Users</h2>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(user => { %>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td>
+                <span class="status <%= user.status.toLowerCase() %>">
+                  <%= user.status %>
+                </span>
+              </td>
+              <td>
+                <button class="btn btn-sm">View</button>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <div class="actions">
+        <a href="#" class="btn">View All Users</a>
+      </div>
+
+      <h2 class="section-title">Recent Orders</h2>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% orders.forEach(order => { %>
+            <tr>
+              <td>#<%= order.id %></td>
+              <td><%= order.customer %></td>
+              <td>$<%= order.amount %></td>
+              <td>
+                <span class="status <%= order.status.toLowerCase() %>">
+                  <%= order.status %>
+                </span>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <div class="actions">
+        <a href="#" class="btn">View All Orders</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>
